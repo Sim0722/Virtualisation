@@ -121,7 +121,7 @@ interface=enp0s3
 On vérifie que l'on récupère des IP : 
 
 | Machine | IP |
-| ------- | -- | 
+| ------- | -------- | 
 | node1.tp1.efrei | 10.1.1.245 |
 | node2.tp1.efrei | 10.1.1.246 |
 | node3.tp1.efrei | 10.1.1.247 |
