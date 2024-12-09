@@ -21,7 +21,7 @@ node2.tp1.efrei = ping 10.1.1.2 depuis node1.tp1.efrei
 node1.tp1.efrei = ping 10.1.1.1 depuis node2.tp1.efrei
 
 **Wireshark**
-![ping](./ping.pcapng)
+[ping](capture/ping.pcapng)
 
 **ARP**
 la commande utilisée pour connaître la MAC de son correspondant avec un vcps est : arp
