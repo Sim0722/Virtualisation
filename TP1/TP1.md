@@ -45,7 +45,7 @@ Etant donné qu'on avait déjà attribué des IP statique pour node1 et node2 on
 
 ## Serveur DHCP
 
-![DHCP](./ping_part2.pcapng)
+[DHCP](capture/ping_part2.pcapng)
 
 ### 1.Legit 
 
@@ -99,7 +99,7 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 
 **Wireshark DORA**
 
-![DHCP](./DORA.pcapng)
+[DHCP](capture/DORA.pcapng)
 ### 2.DHCP sppofing
 
 **Configurer dnsmasq**
@@ -128,11 +128,10 @@ On vérifie que l'on récupère des IP :
 
 **Wireshark**
 
-![DHCP](./DHCP_Spoof.pcapng)
+[DHCP](capture/DHCP_Spoof.pcapng)
 
 
 
 
 
 
-coucou
