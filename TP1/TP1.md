@@ -33,8 +33,8 @@ la commande utilisée pour connaître la MAC de son correspondant avec un vcps e
 On réutilise `show` :
 
 | Machine | Adresse MAC |
-| ------- | ----------- |
-| node1.tp1.efrei | 00:50:79:66:68:00 | 
+| ------- | ------- |
+| node1.tp1.efrei | 00:50:79:66:68:00 |
 | node2.tp1.efrei | 00:50:79:66:68:01 |
 | node3.tp1.efrei | 00:50:79:66:68:02 |
 
