@@ -61,7 +61,7 @@ On attribue un IP statique à la machine :
 
 - sudo nano /etc/sysconfig/network-scripts/ifcfg-enp0s3
 - on rentre les infos suivantes :
-DEVICE=enp0s3;
+```DEVICE=enp0s3;
 NAME=lan;
 
 ONBOOT=yes;
@@ -69,7 +69,7 @@ BOOTPROTO=static;
 
 IPADDR=10.1.1.253;
 NETMASK=255.255.255.0;
-
+```
 Pout que la config s'applique :
 - sudo nmcli con reload
 - sudo nmcli con up lan
@@ -78,13 +78,13 @@ On configure le DHCP :
 
 - sudo nano /etc/dhcp/dhcpd.conf
 - on rentre les infos suivantes : 
-`authoritative;
+```authoritative;
 
 subnet 10.1.1.0 netmask 255.255.255.0 {
 	range dynamic-bootp 10.1.1.10 10.1.1.50;
 	option broadcast-address 10.1.1.255;
 	option routeurs 10.1.1.1;
-}`
+}```
 
 - On ouvre le port car par défaut sur les machines rocky linux le firewall bloque toutes les requêtes :
 
@@ -110,11 +110,11 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 - sudo install dnsmasq -y
 - sudo nano /etc/dnsmasq.conf
 - on créer la conf :
-`port=0
+̀```port=0
  dhcp-range=10.1.1.210,10.1.1.250,255.255.255.0,12h
  dhcp-authoritative
- interface=enp0s3` 
-
+ interface=enp0s3 
+```
 - sudo systemctl enable --now dnsmasq
 - sudo firewall-cmd --add-service=dhcp
 - sudo firewall-cmd --runtime-to-permanent 
