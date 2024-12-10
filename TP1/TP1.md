@@ -100,6 +100,7 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 **Wireshark DORA**
 
 [DHCP](capture/DORA.pcapng)
+
 ### 2.DHCP spoofing
 
 **Configurer dnsmasq**
@@ -120,18 +121,15 @@ interface=enp0s3
 
 On vérifie que l'on récupère des IP : 
 
+
 | Machine | Adresse IP |
-| ------- | ---------- | 
+| ------- | ----------- |
 | node1.tp1.efrei | 10.1.1.245 |
 | node2.tp1.efrei | 10.1.1.246 |
 | node3.tp1.efrei | 10.1.1.247 |
 
+
 **Wireshark**
 
 [DHCP](capture/DHCP_Spoof.pcapng)
-
-
-
-
-
 
