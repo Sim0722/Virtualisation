@@ -43,8 +43,6 @@ On réutilise `show` :
 Etant donné qu'on avait déjà attribué des IP statique pour node1 et node2 on doit juste faire la même chose pour node3
 - ip 10.1.1.3/24
 
-**Ping d'une machine à l'autre**
-
 ## Serveur DHCP
 
 [DHCP](capture/ping_part2.pcapng)
