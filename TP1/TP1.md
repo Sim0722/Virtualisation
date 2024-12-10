@@ -91,8 +91,8 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 
 **Récupérer des adresses IP automatiquement depuis les trois nodes**
 
-| Machine | IP |
-| ------- | ---|
+| Machine | Adresse IP |
+| ------- | ---------- |
 | node1.tp1.efrei | 10.1.1.10 |
 | node2.tp1.efrei | 10.1.1.11 |
 | node3.tp1.efrei | 10.1.1.12 |
@@ -100,7 +100,7 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 **Wireshark DORA**
 
 [DHCP](capture/DORA.pcapng)
-### 2.DHCP sppofing
+### 2.DHCP spoofing
 
 **Configurer dnsmasq**
 
@@ -120,8 +120,8 @@ interface=enp0s3
 
 On vérifie que l'on récupère des IP : 
 
-| Machine | IP |
-| ------- | -------- | 
+| Machine | Adresse IP |
+| ------- | ---------- | 
 | node1.tp1.efrei | 10.1.1.245 |
 | node2.tp1.efrei | 10.1.1.246 |
 | node3.tp1.efrei | 10.1.1.247 |
