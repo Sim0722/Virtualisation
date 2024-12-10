@@ -113,7 +113,7 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 - sudo install dnsmasq -y
 - sudo nano /etc/dnsmasq.conf
 - on créer la conf :
-̀```
+``` 
 port=0
 dhcp-range=10.1.1.210,10.1.1.250,255.255.255.0,12h
 dhcp-authoritative
