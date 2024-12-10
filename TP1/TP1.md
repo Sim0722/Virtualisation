@@ -117,7 +117,8 @@ subnet 10.1.1.0 netmask 255.255.255.0 {
 port=0
 dhcp-range=10.1.1.210,10.1.1.250,255.255.255.0,12h
 dhcp-authoritative
-interface=enp0s3 
+interface=enp0s3
+ 
 ```
 - sudo systemctl enable --now dnsmasq
 - sudo firewall-cmd --add-service=dhcp
