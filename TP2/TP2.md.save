@@ -1,0 +1,102 @@
+# TP2 : Routage, DHCP et DNS
+
+## I- Routage
+
+**Configuration de `router.tp2.efrei`**
+
+Pour commencer on configure l'interface du routeur qui est branché au NAT:
+
+Pour cela on créer un hostname avec la commande :
+- sudo hostnamectl set-hostname router.tp2.efrei
+
+Ensuite, pour que la machine puisse agir comme un routeur il faut dire au firewall de ne pas rejeter les paquets IPs qui ne lui sont pas déstiné.
+
+- sudo firewall-cmd --add-masquerade
+
+et pour que cette règle persiste :
+
+- sudo firewall-cmd --add-masquerade --permanent
+
+Continuons : 
+
+Il faut maintenant lui attribuer une IP statique, (c'est comme au TP1 youpi c'est facile):
+
+- sudo nano /etc/sysconfig/network-scripts/ifcfg-enp0s8
+- on rentre les infos suivantes :
+```
+DEVICE=enp0s8;
+NAME=lan;
+
+ONBOOT=yes;
+BOOTPROTO=static;
+
+IPADDR=10.2.1.254;
+NETMASK=255.255.255.0;
+```
+Pout que la config s'applique :
+- sudo nmcli con reload
+- sudo nmcli con up lan 
+
+Et pour finir on fait un beau ip -a :
+```
+1: lo: <LOOPBACK,UP,LOWER_UP> mtu 65536 qdisc noqueue state UNKNOWN group default qlen 1000
+    link/loopback 00:00:00:00:00:00 brd 00:00:00:00:00:00
+    inet 127.0.0.1/8 scope host lo
+       valid_lft forever preferred_lft forever
+    inet6 ::1/128 scope host 
+       valid_lft forever preferred_lft forever
+2: enp0s3: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:fd:79:7a brd ff:ff:ff:ff:ff:ff
+    inet 192.168.122.216/24 brd 192.168.122.255 scope global dynamic noprefixroute enp0s3
+       valid_lft 2892sec preferred_lft 2892sec
+    inet6 fe80::a00:27ff:fefd:797a/64 scope link 
+       valid_lft forever preferred_lft forever
+3: enp0s8: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:8f:24:77 brd ff:ff:ff:ff:ff:ff
+    inet 10.2.1.254/24 brd 10.2.1.255 scope global noprefixroute enp0s8
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fe8f:2477/64 scope link 
+       valid_lft forever preferred_lft forever
+4: enp0s9: <BROADCAST,MULTICAST,UP,LOWER_UP> mtu 1500 qdisc fq_codel state UP group default qlen 1000
+    link/ether 08:00:27:d4:75:23 brd ff:ff:ff:ff:ff:ff
+    inet 192.168.57.10/24 brd 192.168.57.255 scope global noprefixroute enp0s9
+       valid_lft forever preferred_lft forever
+    inet6 fe80::a00:27ff:fed4:7523/64 scope link 
+       valid_lft forever preferred_lft forever
+```
+
+Note : afin de pouvoir se connecter en ssh à la machine on a configurer une ip statique car on a rajouter une carte réseau. 
+D'où le fait qu'il y ait enp0s9. 
+
+**Configuration de `node1.tp2.efrei`**
+
+
+**Afficher la CAM Table du switch**
+
+## II- Server DHCP
+
+**Install et conf du DHCP**
+
+**Test du DHCP**
+
+**Bonus**
+
+**Wireshark it !**
+
+## III- ARP
+
+### 1. Les tables ARP
+
+**Affichez la table ARP de `router.tp2.efrei`**
+
+**Capturez l'échange ARP avec Wireshark**
+
+### 2. ARP Poisoning
+
+**Envoyez une trame ARP arbitraire**
+
+**Mettre en place un ARP MITM**
+
+**Capture Wireshark `arp_mitm.pcap`**
+
+**Réaliser une attaque avec scapy**
