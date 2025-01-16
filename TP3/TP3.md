@@ -4,7 +4,7 @@
 
 ### B. On ajoute les routes vers les LAN
 
-** ping d'un client du LAN1 vers un client du LAN 2 :** 
+**ping d'un client du LAN1 vers un client du LAN 2 :** 
 
 - ping 10.3.2.1            
 
@@ -14,13 +14,13 @@
     84 bytes from 10.3.2.1 icmp_seq=4 ttl=62 time=35.727 ms
     84 bytes from 10.3.2.1 icmp_seq=5 ttl=62 time=40.127 ms
 
-** Capture Wireshark : ** 
+**Capture Wireshark :** 
 
 ![ping_partie1](/capture)
 
-#### ** Afficher les adresses MAC des routeurs : **
+#### **Afficher les adresses MAC des routeurs :**
 
-** routeur 1 : **
+**routeur 1 :**
 
 - show arp
 
@@ -33,7 +33,7 @@
     Internet  192.168.122.145         -   c401.058d.0000  ARPA   FastEthernet0/0
     Internet  10.3.1.254              -   c401.058d.0001  ARPA   FastEthernet0/1
 
-** routeur 2 : **
+**routeur 2 :**
 
 - sh arp
 
@@ -47,7 +47,7 @@
 
 ### C. Accès Internet
 
-** Prouvez que vous avez déjà un accès internet **
+**Prouvez que vous avez déjà un accès internet**
 
 - ping 1.1.1.1
 
@@ -56,7 +56,7 @@
     !!!!!
     Success rate is 100 percent (5/5), round-trip min/avg/max = 88/110/128 ms
 
-** Accès internet lan1 **
+**Accès internet lan1**
 
 - ping 1.1.1.1
 
@@ -78,7 +78,7 @@
     7   140.204.102.68   60.124 ms  49.418 ms  50.354 ms
     8     *  *  *
 
-** Accès internet lan2 **
+**Accès internet lan2**
 
 - ping 1.1.1.1
 
@@ -106,7 +106,7 @@
 
 ### A. VLANs
 
-** Test de ping **
+**Test de ping**
 
 - ping 10.3.1.2
 
@@ -139,8 +139,8 @@
     84 bytes from 10.3.1.254 icmp_seq=4 ttl=255 time=14.650 ms
     84 bytes from 10.3.1.254 icmp_seq=5 ttl=255 time=5.984 ms
 
-#### ** Test de ping : accès internet **
-** Du Routeur **
+#### **Test de ping : accès internet**
+**Routeur**
 
 - ping 1.1.1.1
 
@@ -149,7 +149,7 @@
     !!!!!
     Success rate is 100 percent (5/5), round-trip min/avg/max = 52/61/72 ms
 
-** VPCS **
+**VPCS**
 
 - PC1>ping 1.1.1.1
 
@@ -172,7 +172,7 @@
 
 ## DHCP 
 
-** Prouvez avec un VPCS **
+**Prouvez avec un VPCS**
 
 - pc4.tp3.b2> ip dhcp
 
@@ -193,7 +193,7 @@
 
 ## DNS 
 
-** Tests de Résolution DNS **
+**Tests de Résolution DNS**
 
 - pc4.tp3.b2> sh ip
 
@@ -209,7 +209,7 @@
     MTU         : 1500
 
 
-** ping efrei.fr : **
+**ping efrei.fr :**
 
 - pc4.tp3.b2> ping efrei.fr
     
@@ -219,7 +219,7 @@
     84 bytes from 51.255.68.208 icmp_seq=2 ttl=61 time=51.403 ms
     84 bytes from 51.255.68.208 icmp_seq=3 ttl=61 time=43.233 ms
 
-** ping dns.tp3.b2 : **
+**ping dns.tp3.b2 :**
 
 - pc4.tp3.b2> ping dns.tp3.b2
     
@@ -230,7 +230,7 @@
     84 bytes from 10.3.3.1 icmp_seq=3 ttl=63 time=18.781 ms
     84 bytes from 10.3.3.1 icmp_seq=4 ttl=63 time=17.942 ms
 
-** Capture Wireshark **
+**Capture Wireshark**
 
 ![ping_part_dns](/capture)
 
