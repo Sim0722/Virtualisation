@@ -16,7 +16,7 @@
 
 **Capture Wireshark :** 
 
-![ping_partie1](/capture)
+![ping_partie1](capture/ping_partie1.pcapng)
 
 #### **Afficher les adresses MAC des routeurs :**
 
