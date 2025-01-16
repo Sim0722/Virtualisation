@@ -232,7 +232,7 @@
 
 **Capture Wireshark**
 
-![ping_part_dns](/capture)
+![ping_part_dns](capture/ping_part_dns.pcapng)
 
 
 
